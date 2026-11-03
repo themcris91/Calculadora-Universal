@@ -1,0 +1,18 @@
+{
+  "name": "calculadora-universal",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build:wasm": "./engine-c/build.sh",
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "preview": "npm --prefix web run preview",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.4"
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+dev-dist/
+engine-c/build/
+web/public/wasm/
+*.log
+.DS_Store
+coverage/
