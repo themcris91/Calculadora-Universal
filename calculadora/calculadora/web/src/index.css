@@ -1,0 +1,25 @@
+:root {
+  --bg: #f5f3ee; --fg: #14201f; --muted: #5b6b69; --line: #cfd6d3;
+  --accent: #0b5394; --accent-fg: #f5f3ee; --err: #a4262c;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--fg); background: var(--bg);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0e1716; --fg: #e8efed; --muted: #9db0ad; --line: #2b3a38; --accent: #5fc4bd; --accent-fg: #0e1716; --err: #ff8a8f; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 44rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+h1 { font-size: 1.75rem; margin: 0 0 .25rem; }
+h2 { font-size: 1.1rem; margin: 0 0 .75rem; }
+section { border-top: 1px solid var(--line); padding: 1.5rem 0; }
+.status { color: var(--muted); margin: 0 0 1.5rem; }
+.status.ok { color: var(--accent); }
+.row { display: flex; flex-wrap: wrap; gap: .75rem; align-items: end; }
+label { display: grid; gap: .25rem; font-size: .9rem; color: var(--muted); }
+input { font: inherit; color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: 4px; padding: .5rem .6rem; width: 8.5rem; }
+button { font: inherit; background: var(--accent); color: var(--accent-fg); border: 0; border-radius: 4px; padding: .55rem 1rem; cursor: pointer; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+:is(input, button):focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.err { color: var(--err); margin: .75rem 0 0; }
+.tex { overflow-x: auto; margin-top: .75rem; }
