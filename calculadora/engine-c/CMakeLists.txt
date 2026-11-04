@@ -12,6 +12,8 @@ set(SOURCES
     src/numeric.c 
     src/finance.c 
     src/basen.c
+    src/complexnum.c
+    src/linalg.c
 )
 
 add_library(math_engine ${SOURCES})
@@ -26,3 +28,9 @@ target_link_libraries(run_test_finance math_engine m)
 
 add_executable(run_test_basen tests/test_basen.c tests/unity/unity.c)
 target_link_libraries(run_test_basen math_engine m)
+
+add_executable(run_test_complexnum tests/test_complexnum.c tests/unity/unity.c)
+target_link_libraries(run_test_complexnum math_engine m)
+
+add_executable(run_test_linalg tests/test_linalg.c tests/unity/unity.c)
+target_link_libraries(run_test_linalg math_engine m)
