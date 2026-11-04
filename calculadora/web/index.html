@@ -2,25 +2,13 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b5394" />
-    <meta name="description" content="Calculadora Universal: motor C99 en WebAssembly, offline-first." />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="icon" type="image/png" href="/icons/icon-192.png" />
-    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <title>Calculadora Universal</title>
+    <script src="/wasm/api.js"></script>
   </head>
-  <body>
+  <body class="bg-slate-900">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-      if ('serviceWorker' in navigator && '%MODE%' === 'production') {
-        window.addEventListener('load', function () {
-          navigator.serviceWorker.register('/sw.js').catch(function (e) {
-            console.error('SW registration failed', e)
-          })
-        })
-      }
-    </script>
   </body>
 </html>
