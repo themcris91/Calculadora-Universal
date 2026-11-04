@@ -10,18 +10,28 @@ export default function App() {
   const [detResult, setDetResult] = useState<string>('');
 
   useEffect(() => {
-    // Accedemos a la función global que crea el index.html
     // @ts-ignore
-    if (window.createModule) {
+    if (window.Module) {
       // @ts-ignore
-      window.createModule().then((instance: any) => {
+      window.Module({
+        locateFile: (path: string) => {
+          if (path.endsWith('.wasm')) return '/wasm/api.wasm';
+          return path;
+        }
+      }).then((instance: any) => {
+        console.log("WASM cargado correctamente");
         setWasm(instance);
       });
+    } else {
+      console.error("No se encontró window.Module");
     }
   }, []);
 
   const calcularNPV = () => {
-    if (!wasm) return;
+    if (!wasm) {
+      alert("El motor WASM aún no ha cargado. Espera un segundo.");
+      return;
+    }
     const cashflows = flows.split(',').map(Number);
     const ptr = wasm._malloc(cashflows.length * 8);
     const resultPtr = wasm._malloc(8);
@@ -35,7 +45,10 @@ export default function App() {
   };
 
   const calcularDet = () => {
-    if (!wasm) return;
+    if (!wasm) {
+      alert("El motor WASM aún no ha cargado. Espera un segundo.");
+      return;
+    }
     const matrix = m.split(',').map(Number);
     const ptr = wasm._malloc(matrix.length * 8);
     const resultPtr = wasm._malloc(8);
