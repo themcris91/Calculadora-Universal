@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-SRC="src/api.c src/print.c"
+SRC="src/api.c src/print.c src/status.c src/numeric.c"
 WEB_OUT="../web/public/wasm"
 TEST_OUT="build/test"
 COMMON="-std=c99 -O3 -Wall -Wextra -Werror --no-entry \

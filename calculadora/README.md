@@ -9,10 +9,10 @@ Motor C99 → WebAssembly → PWA offline-first (React + TS + Vite + Workbox + K
 ## Comandos
 ```bash
 ./engine-c/build.sh        # genera web/public/wasm/api.{js,wasm} y engine-c/build/test/api.{mjs,wasm}
-npm install                # raíz (Vitest)
-cd web && npm install && npm run dev
+npm install                # raíz + workspace web
+npm run dev
 ```
-Producción: `cd web && npm run build && npm run preview` (el SW solo se registra en build).
+Producción: `npm run build && npm run preview` (el SW solo se registra en build).
 
 ## Verificar PWA offline
 1. `npm run build && npm run preview`; abrir la URL con conexión y recargar una vez.
@@ -23,7 +23,7 @@ Producción: `cd web && npm run build && npm run preview` (el SW solo se registr
 ## Tests
 ```bash
 ./engine-c/build.sh && npm test      # smoke Vitest sobre el WASM
-cc -std=c99 -Wall -Wextra -Werror engine-c/src/*.c engine-c/tests/test_sumar.c -lm -o /tmp/t && /tmp/t   # unit C nativo
+./engine-c/test.sh                   # unit tests C nativos (Unity); COVERAGE=1 para instrumentar
 ```
 
 ## Notas

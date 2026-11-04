@@ -6,7 +6,7 @@ on:
 jobs:
   build-wasm:
     runs-on: ubuntu-latest
-    container: emscripten/emsdk:3.1.64 # TODO: confirmar versión a fijar
+    container: emscripten/emsdk:3.1.64
     steps:
       - uses: actions/checkout@v4
       - run: ./engine-c/build.sh
@@ -29,10 +29,8 @@ jobs:
         with:
           name: wasm
           path: .
-      - name: Unit test C (nativo)
-        run: |
-          cc -std=c99 -Wall -Wextra -Werror engine-c/src/api.c engine-c/src/print.c engine-c/tests/test_sumar.c -lm -o /tmp/test_sumar
-          /tmp/test_sumar
+      - name: Unit tests C (nativo, Unity)
+        run: ./engine-c/test.sh
       - run: npm install
       - run: npm test
-      - run: cd web && npm install && npm run build
+      - run: npm run build -w web

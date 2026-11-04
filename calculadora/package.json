@@ -2,13 +2,16 @@
   "name": "calculadora-universal",
   "private": true,
   "version": "0.0.0",
+  "license": "MIT",
   "type": "module",
+  "workspaces": ["web"],
   "engines": { "node": ">=20" },
   "scripts": {
     "build:wasm": "./engine-c/build.sh",
-    "dev": "npm --prefix web run dev",
-    "build": "npm --prefix web run build",
-    "preview": "npm --prefix web run preview",
+    "test:c": "./engine-c/test.sh",
+    "dev": "npm run dev -w web",
+    "build": "npm run build -w web",
+    "preview": "npm run preview -w web",
     "test": "vitest run"
   },
   "devDependencies": {

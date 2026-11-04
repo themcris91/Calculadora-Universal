@@ -1,6 +1,6 @@
 :root {
   --bg: #f5f3ee; --fg: #14201f; --muted: #5b6b69; --line: #cfd6d3;
-  --accent: #0f3d3e; --accent-fg: #f5f3ee; --err: #a4262c;
+  --accent: #0b5394; --accent-fg: #f5f3ee; --err: #a4262c;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   color: var(--fg); background: var(--bg);
 }
